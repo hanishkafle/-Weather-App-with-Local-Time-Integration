@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff; /* White background */
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2, h3 {
+            text-align: center;
+            color: #555;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .weather-info {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .weather-info img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .day {
+            font-size: 14px;
+            color: #888;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Weather App</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" id="city" name="city" placeholder="Enter your city">
+        <button type="submit">Search</button>
+    </form>
+
+    <div class ='weather-info'>
+        <p>Weather in {{ city }}</p>
+        <p>Description: {{ description }}</p>
+        <p>Temperature: {{ temp }}°C</p>
+        <p>Current Local Time: {{ local_time }}</p>
+        <img src="http://openweathermap.org/img/w/{{ icon }}.png" alt="Weather Icon">
+        
+
+   
+    </div>
+    
+
+    <p class="day">{{ day }}</p>
+</div>
+
+</body>
+</html>
